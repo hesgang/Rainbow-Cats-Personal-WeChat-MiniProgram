@@ -20,6 +20,8 @@ exports.main = async (context) => {
       desc: context.desc,
 
       available: true,
+      finish: "未完成",
+      forever: false,
       star: false
     }
   })

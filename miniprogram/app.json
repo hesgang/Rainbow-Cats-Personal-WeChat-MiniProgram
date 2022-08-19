@@ -8,13 +8,14 @@
     "pages/MarketAdd/index",
     "pages/MarketDetail/index",
     "pages/Account/index",
-    "pages/ItemDetail/index"
+    "pages/ItemDetail/index",
+    "pages/StudyAdd/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3d84a8",
-    "navigationBarTitleText": "情侣专属小程序",
+    "navigationBarTitleText": "小青青家",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

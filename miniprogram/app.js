@@ -8,16 +8,17 @@ App({
       _openidB: '',
 
       //记录使用者的名字
-      userA: '小明',
-      userB: '小红',
+      userA: '阿港',
+      userB: '阿青',
 
-      date: '2000/1/1 00:00:00',
+      date: '2022/5/3 00:00:00',
 
       //用于存储待办记录的集合名称
       collectionMissionList: 'MissionList',
       collectionMarketList: 'MarketList',
       collectionStorageList: 'StorageList',
       collectionUserList: 'UserList',
+      collectionStudyList: 'StudyList',
 
       //最多单次交易积分
       maxCredit: 100,

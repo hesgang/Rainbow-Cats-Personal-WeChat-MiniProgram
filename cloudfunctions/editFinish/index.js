@@ -8,12 +8,12 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (context) => {
-  // 根据待办的 _id 找到并反转星标标识
+  // 根据待办 _id，获得并更新待办事项状态
   return await db.collection(context.list).where({
     _id: context._id
   }).update({
     data: {
-      star: context.value
+      finish: context.value
     }
   })
 }

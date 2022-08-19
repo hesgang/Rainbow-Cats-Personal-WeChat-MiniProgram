@@ -1,23 +1,38 @@
 <view style="width:100%; background: none;">
+<wxs module="util" src="../util.wxs" />
 
-  <swiper indicator-dots="true" indicator-color="grey" indicator-active-color="#3d84a8" autoplay="true" circular="true" interval="3000" duration="800" style="background: #F6F6F6; height: 220px; width: 100%;">
+  <!-- <swiper indicator-dots="true" indicator-color="grey" indicator-active-color="#3d84a8" autoplay="true" circular="true" interval="3000" duration="800" style="background: #F6F6F6; height: 220px; width: 100%;">
       <swiper-item><image src="轮播图地址" mode='widthFix' class="swiper-image" /></swiper-item>
       <swiper-item><image src="轮播图地址" mode='widthFix' class="swiper-image" /></swiper-item>
       <swiper-item><image src="轮播图地址" mode='widthFix' class="swiper-image" /></swiper-item>
-  </swiper>
+  </swiper> -->
 
 
-<view class="form-group_label">📅 每日一句</view>
   <view class="form-group" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);">
     <view class="form-cell">
       <view class="slide">
         <view class="title">今天是{{userA}}和{{userB}}相恋的第<text class="nums"> {{days}} </text>天</view>
       </view>
     </view>
-    <view class="form-cell">
+    <!-- <view class="form-cell">
       <view class="slide">
         <view class="title">{{sentences[(days)%lenOfSentences]}}</view>
       </view>
+    </view> -->
+  </view>
+
+  <view class="form-group_label">📅 学习计划</view>
+  <view class="form-group" wx:if="{{studyMissions.length > 0}}" 
+  style="z-index: 0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);">
+    <view class="form-cell" wx:for="{{studyMissions}}" wx:key="index">
+      <mp-slideview buttons="{{slideButtons}}" data-index='{{index}}' icon="{{true}}" bindbuttontap="slideButton">
+        <view class="slide" data-index="{{index}}" bindtap="toDetailPage">
+          <view class="mission-info">
+            <view class="mission-info_title">{{util.filterStr(item.title, 10)}}</view>
+            <view class="mission-info_finish">📅{{util.filterStr(item.finish, 10)}}</view>
+          </view>
+        </view>
+      </mp-slideview>
     </view>
   </view>
 
@@ -37,3 +52,12 @@
 
 
 </view>
+
+<movable-area style="pointer-events: none; position: fixed; width: 100%; height: 100%;">
+  <movable-view style="pointer-events: auto; width: 20%; height: 20%;" x="{{screenWidth}}" y="{{screenHeight}}" direction="all">
+    <button class="btn-normal" hover-class="btn-hover" size="mini" bindtap="toAddPage" 
+    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <image style = "margin-top: 10px; height: 80%; width: 80%;" mode="widthFix" src="Images/Plus.png"/><text style="font-size: 14px; font-weight: 400;">计划</text>
+    </button>
+  </movable-view>
+</movable-area>

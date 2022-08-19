@@ -29,3 +29,14 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.star {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.markBtn .weui-slideview__btn {background-color: greenyellow;}
+.starBtn .weui-slideview__btn {background-color: gold;}
+.removeBtn .weui-slideview__btn {background-color: lightsalmon;}
