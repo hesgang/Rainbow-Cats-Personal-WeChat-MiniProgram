@@ -140,8 +140,12 @@ Page({
   
           //触发显示更新
           mission.available = false
-          this.setData({studyMissions: this.data.studyMissions})
-          getCredit()
+          if(mission._openid === getApp().globalData._openidA){
+            this.setData({studyMissions: this.data.studyMissions, creditA: this.data.creditA + mission.credit})
+          }else if(mission._openid === getApp().globalData._openidB){
+            this.setData({studyMissions: this.data.studyMissions, creditB: this.data.creditB + mission.credit})
+          }
+          
           
   
           //显示提示
