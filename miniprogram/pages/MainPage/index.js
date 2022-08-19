@@ -31,24 +31,32 @@ Page({
             lenOfSentences: this.data.sentences.length,
             date: getApp().globalData.date,     
         })
-        this.getCreditA()
-        this.getCreditB()
+        this.getCredit()
+        // this.getCreditB()
         this.getDays()
     },
 
     getCreditA(){
-        wx.cloud.callFunction({name: 'getElementByOpenId', data: {list: getApp().globalData.collectionUserList, _openid: getApp().globalData._openidA}})
+        wx.cloud.callFunction({name: 'ggetList', data: {list: getApp().globalData.collectionUserList, _openid: getApp().globalData._openidB}})
         .then(res => {
           this.setData({creditA: res.result.data[0].credit})
         })
     },
     
     getCreditB(){
-        wx.cloud.callFunction({name: 'getElementByOpenId', data: {list: getApp().globalData.collectionUserList, _openid: getApp().globalData._openidB}})
+        wx.cloud.callFunction({name: 'getList', data: {list: getApp().globalData.collectionUserList, _openid: getApp().globalData._openidB}})
         .then(res => {
-            this.setData({creditB: res.result.data[0].credit})
+            this.setData({creditB: res.result.data[1].credit})
         })
     },
+
+    getCredit(){
+        wx.cloud.callFunction({name: 'getList', data: {list: getApp().globalData.collectionUserList, _openid: getApp().globalData._openidB}})
+        .then(res => {
+            this.setData({creditA: res.result.data[0].credit, creditB: res.result.data[1].credit})
+        })
+    },
+
     getDays(){
         var date1= this.data.date;  //开始时间
         var date2 = new Date();    //结束时间
@@ -87,7 +95,6 @@ Page({
     const mission = this.data.studyMissions[missionIndex]
 
     await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
-
         //处理完成点击事件
         if (index === 0) {
             if(mission.available) {
@@ -125,15 +132,16 @@ Page({
       const mission = this.data.studyMissions[missionIndex]
   
       await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
-        if(mission._openid == openid.result){
+        if(mission._openid === openid.result){
           //完成对方任务，奖金打入对方账号
           wx.cloud.callFunction({name: 'editAvailable', data: {_id: mission._id, value: false, list: getApp().globalData.collectionStudyList}})
           wx.cloud.callFunction({name: 'editFinish', data: {_id: mission._id, value: "完成", list: getApp().globalData.collectionStudyList}})
-          // wx.cloud.callFunction({name: 'editCredit', data: {_openid: mission._openid, value: mission.credit, list: getApp().globalData.collectionUserList}})
+          wx.cloud.callFunction({name: 'editCredit', data: {_openid: mission._openid, value: mission.credit, list: getApp().globalData.collectionUserList}})
   
           //触发显示更新
           mission.available = false
           this.setData({studyMissions: this.data.studyMissions})
+          getCredit()
           
   
           //显示提示
@@ -142,6 +150,7 @@ Page({
               icon: 'success',
               duration: 2000
           })
+          
   
         }else{
           wx.showToast({

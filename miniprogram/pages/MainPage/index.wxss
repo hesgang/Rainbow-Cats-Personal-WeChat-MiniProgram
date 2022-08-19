@@ -40,3 +40,26 @@
 .markBtn .weui-slideview__btn {background-color: greenyellow;}
 .starBtn .weui-slideview__btn {background-color: gold;}
 .removeBtn .weui-slideview__btn {background-color: lightsalmon;}
+
+.mission-info-finish{
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 10px;
+  top: 17px;
+}
+
+.mission-info-unfinish{
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 10px;
+  top: 17px;
+}
+
+.mission-info_date{
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: 400;
+  /* color: rgb(221, 111, 20); */
+}

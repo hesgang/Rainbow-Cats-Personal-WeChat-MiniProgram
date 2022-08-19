@@ -28,8 +28,13 @@
       <mp-slideview buttons="{{slideButtons}}" data-index='{{index}}' icon="{{true}}" bindbuttontap="slideButton">
         <view class="slide" data-index="{{index}}" bindtap="toDetailPage">
           <view class="mission-info">
-            <view class="mission-info_title">{{util.filterStr(item.title, 10)}}</view>
-            <view class="mission-info_finish">📅{{util.filterStr(item.finish, 10)}}</view>
+            <!-- <view class="mission-info_title"></view> -->
+            <text class="mission-info_title">{{util.filterStr(item.title, 10)}}</text>
+            <view class="mission-info_date">📅 {{util.filterStr(item.date, 10)}} 创建</view>
+          </view>
+          <view class="mission-info_author">
+            <image wx:if="{{item.available === false}}" class="mission-info-finish" src="Images/done.svg"/>
+            <image wx:if="{{item.available === true}}" class="mission-info-unfinish" src="Images/unfinish.svg"/>
           </view>
         </view>
       </mp-slideview>

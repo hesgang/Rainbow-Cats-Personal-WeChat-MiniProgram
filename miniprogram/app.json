@@ -46,5 +46,8 @@
   "lazyCodeLoading": "requiredComponents",
   "cloud": true,
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "usingComponents": {
+    "icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+  }
 }
