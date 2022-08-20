@@ -1,6 +1,5 @@
-<view style="width:100%; background: none;">
 <wxs module="util" src="../util.wxs" />
-
+<view style="width:100%; background: none;">
   <!-- <swiper indicator-dots="true" indicator-color="grey" indicator-active-color="#3d84a8" autoplay="true" circular="true" interval="3000" duration="800" style="background: #F6F6F6; height: 220px; width: 100%;">
       <swiper-item><image src="轮播图地址" mode='widthFix' class="swiper-image" /></swiper-item>
       <swiper-item><image src="轮播图地址" mode='widthFix' class="swiper-image" /></swiper-item>
@@ -62,7 +61,7 @@
   <movable-view style="pointer-events: auto; width: 20%; height: 20%;" x="{{screenWidth}}" y="{{screenHeight}}" direction="all">
     <button class="btn-normal" hover-class="btn-hover" size="mini" bindtap="toAddPage" 
     style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-      <image style = "margin-top: 10px; height: 80%; width: 80%;" mode="widthFix" src="Images/Plus.png"/><text style="font-size: 14px; font-weight: 400;">计划</text>
+      <image style = "margin-top: 10px; height: 80%; width: 80%;" mode="widthFix" src="Images/Plus.png"/><text style="font-size: 14px; font-weight: 400;">任务</text>
     </button>
   </movable-view>
 </movable-area>

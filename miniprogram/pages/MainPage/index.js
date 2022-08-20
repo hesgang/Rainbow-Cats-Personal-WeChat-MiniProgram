@@ -67,14 +67,6 @@ Page({
         })
     },
 
-    // mysetData(e){
-    //      return new Date(e.date).getTime()
-    // }
-
-    // deleteOver(){
-
-    // }
-
 
   //获取页面大小
   async getScreenSize(){
@@ -102,28 +94,38 @@ Page({
     const missionIndex = element.currentTarget.dataset.index
     const mission = this.data.studyMissions[missionIndex]
 
-    await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
-        //处理完成点击事件
-        if (index === 0) {
-            if(mission.available) {
-                this.finishMission(element)
-            }else{
-                wx.showToast({
-                    title: '任务已经完成',
-                    icon: 'error',
-                    duration: 2000
-                })
-            }
-
-        }else  if (index === 1) {      //处理删除按钮点击事件
-                wx.cloud.callFunction({name: 'deleteElement', data: {_id: mission._id, list: getApp().globalData.collectionStudyList}})
-                //更新本地数据
-                this.data.studyMissions.splice(missionIndex, 1)
-            }
-
+    // await wx.cloud.callFunction({name: 'getOpenId'}).then(async openid => {
+    //处理完成点击事件
+    if (index === 0) {
+        if(mission.available) {
+            this.finishMission(element)
+        }else{
+            wx.showToast({
+                title: '任务已经完成',
+                icon: 'error',
+                duration: 2000
+            })
+        }
+    }else if (index === 1) {      //处理删除按钮点击事件
+        var missionDate = mission.date;
+        var nowDate = new Date();    //点击时间
+        var delayDate = nowDate.getTime() - new Date(missionDate).getTime();   //时间差的毫秒数 
+        var dateHour = delayDate/(3600*1000); //计算出相差小时
+        console.log(dateHour)
+        if(dateHour < 2){
+            wx.cloud.callFunction({name: 'deleteElement', data: {_id: mission._id, list: getApp().globalData.collectionStudyList}})
+            //更新本地数据
+            this.data.studyMissions.splice(missionIndex, 1)
             //触发显示更新
             this.setData({studyMissions: this.data.studyMissions})
-    })
+        }else{
+            wx.showToast({
+                title: '超时不能删',
+                icon: 'error',
+                duration: 2000
+            })
+        }
+    }
   },
 
   //转到任务详情

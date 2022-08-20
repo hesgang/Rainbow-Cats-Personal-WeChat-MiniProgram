@@ -1,10 +1,15 @@
 {
   "triggers": [
     {
-      "name": "myTrigger",
+      "name": "creditTrigger",
       "type": "timer",
-      "config": "0 50 * * * * *"
-    }
+      "config": "0 59 23 * * * *"
+    },
+    {
+        "name": "deleteStudyTrigger",
+        "type": "timer",
+        "config": "0 1 0 * * * *"
+      } 
   ],
   "permissions": {
     "openapi": [

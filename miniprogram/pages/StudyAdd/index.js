@@ -4,26 +4,35 @@ Page({
     title: '',
     desc: '',
     rangeArray: [0,10,20,30,40,50,60,70,80,90,100],
-    credit: 5,
+    credit: 0,
     maxCredit: getApp().globalData.maxCredit,
     presetIndex: 0,
     presets: [{
       name:"无预设",
       title:"",
       desc:"",
+      credit: 0,
     },
     {
-      name:"背单词",
-      title:"背单词",
-      desc:"背50个单次",
-    }],
+      name:"背单词/学英语",
+      title:"学英语",
+      desc:"必须要学习英语呀！",
+      credit: 5,
+    },
+    {
+        name:"休息",
+        title:"休息",
+        desc:"今天好好玩！",
+        credit: -10,
+      }],
     list: getApp().globalData.collectionStudyList,
   },
 
   //数据输入填写表单
   onTitleInput(e) {
     this.setData({
-      title: e.detail.value
+      title: e.detail.value,
+      credit: 2
     })
   },
   onDescInput(e) {
@@ -42,6 +51,7 @@ Page({
       presetIndex: e.detail.value,
       title: this.data.presets[e.detail.value].title,
       desc: this.data.presets[e.detail.value].desc,
+      credit: this.data.presets[e.detail.value].credit,
     })
   },
 // 步进器
@@ -87,14 +97,7 @@ Page({
       })
       return
     }
-    if (this.data.credit <= 0) {
-      wx.showToast({
-        title: '一定要有积分',
-        icon: 'error',
-        duration: 2000
-      })
-      return
-    }else{
+    if (this.data.credit != 0) {
         await wx.cloud.callFunction({name: 'addElement', data: this.data}).then(
             () => {
                 wx.showToast({
@@ -115,7 +118,7 @@ Page({
     this.setData({
       title: '',
       desc: '',
-      credit: 5,
+      credit: 0,
       presetIndex: 0,
       list: getApp().globalData.collectionStudyList,
     })
