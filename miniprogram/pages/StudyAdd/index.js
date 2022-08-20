@@ -4,7 +4,7 @@ Page({
     title: '',
     desc: '',
     rangeArray: [0,10,20,30,40,50,60,70,80,90,100],
-    credit: 0,
+    credit: 5,
     maxCredit: getApp().globalData.maxCredit,
     presetIndex: 0,
     presets: [{
@@ -42,6 +42,21 @@ Page({
       presetIndex: e.detail.value,
       title: this.data.presets[e.detail.value].title,
       desc: this.data.presets[e.detail.value].desc,
+    })
+  },
+// 步进器
+  handleChange(e) {
+    const { value } = e.detail;
+    // console.log(value);
+    this.setData({
+        credit: value
+    });
+  },
+  // 滑条
+  onCreditInput(e) {
+    // console.log(parseInt(e.detail.value/5))
+    this.setData({
+      credit: parseInt(e.detail.value/5)*5
     })
   },
 
@@ -100,7 +115,7 @@ Page({
     this.setData({
       title: '',
       desc: '',
-      credit: 0,
+      credit: 5,
       presetIndex: 0,
       list: getApp().globalData.collectionStudyList,
     })

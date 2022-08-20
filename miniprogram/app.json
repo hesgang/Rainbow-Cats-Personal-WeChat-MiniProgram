@@ -9,7 +9,8 @@
     "pages/MarketDetail/index",
     "pages/Account/index",
     "pages/ItemDetail/index",
-    "pages/StudyAdd/index"
+    "pages/StudyAdd/index",
+    "pages/StudyDetail/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -48,6 +49,7 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "usingComponents": {
-    "icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+    "icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "stepper": "../../miniprogram_npm/weui-miniprogram/stepper/stepper"
   }
 }

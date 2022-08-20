@@ -67,6 +67,10 @@ Page({
         })
     },
 
+    // deleteOver(){
+
+    // }
+
 
   //获取页面大小
   async getScreenSize(){
@@ -122,7 +126,7 @@ Page({
   async toDetailPage(element) {
     const missionIndex = element.currentTarget.dataset.index
     const mission = this.data.studyMissions[missionIndex]
-    wx.navigateTo({url: '../MissionDetail/index?id=' + mission._id})
+    wx.navigateTo({url: '../StudyDetail/index?id=' + mission._id})
   },
 
     //完成任务

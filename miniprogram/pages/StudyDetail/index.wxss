@@ -1,0 +1,28 @@
+
+
+.mission-info_title {
+    margin-bottom: 10px;
+    font-size: medium;
+    height: 20px;
+  }
+  
+  .mission-info_desc {
+    font-size: small;
+    color: darkgray;
+  }
+  
+  .mission-info_credit {
+    font-size: small;
+    color: darkgray;
+    margin-left: 10px;
+  }
+
+.form-cell{
+    padding: 3px 15px;
+}
+
+.mission_detail{
+    font-size: small;
+    color: darkgray;
+    width: 30;
+}
