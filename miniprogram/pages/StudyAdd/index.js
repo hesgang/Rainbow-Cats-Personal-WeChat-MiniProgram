@@ -13,9 +13,9 @@ Page({
       desc:"",
     },
     {
-      name:"玩",
-      title:"玩",
-      desc:"狠狠玩",
+      name:"背单词",
+      title:"背单词",
+      desc:"背50个单次",
     }],
     list: getApp().globalData.collectionStudyList,
   },

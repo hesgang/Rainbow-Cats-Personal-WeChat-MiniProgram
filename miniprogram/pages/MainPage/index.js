@@ -67,6 +67,10 @@ Page({
         })
     },
 
+    // mysetData(e){
+    //      return new Date(e.date).getTime()
+    // }
+
     // deleteOver(){
 
     // }
