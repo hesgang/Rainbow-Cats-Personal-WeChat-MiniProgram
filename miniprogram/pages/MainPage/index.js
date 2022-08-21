@@ -118,6 +118,12 @@ Page({
             this.data.studyMissions.splice(missionIndex, 1)
             //触发显示更新
             this.setData({studyMissions: this.data.studyMissions})
+        } else if(mission.available){
+            wx.showToast({
+                title: '会自动删除哒',
+                icon: 'error',
+                duration: 2000
+            })
         }else{
             wx.showToast({
                 title: '超时不能删',

@@ -1,12 +1,13 @@
 {
   "triggers": [
+
     {
       "name": "creditTrigger",
       "type": "timer",
       "config": "0 59 23 * * * *"
     },
     {
-        "name": "deleteStudyTrigger",
+        "name": "deleteTrigger",
         "type": "timer",
         "config": "0 1 0 * * * *"
       } 

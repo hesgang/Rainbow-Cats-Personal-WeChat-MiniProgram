@@ -31,10 +31,32 @@ exports.main = async (event, context) => {
             }
         })
     }
-    if(event.TriggerName == "deleteStudyTrigger"){
+    if(event.TriggerName == "deleteTrigger"){
+        // 删除完成后得学习任务
         db.collection('StudyList').where({
             available: false //false完成
             }).remove()
+
+        
+
+    }
+    // 删除超过七天的已经完成的任务
+    if(event.TriggerName == "deleteTrigger"){
+        var nowDate = new Date();
+        var _list = await db.collection('MissionList').where({
+            available: false //false完成
+            }).get()
+        _list = _list.data
+        for(i=0;i<_list.length;i++){
+            var delayDate = nowDate.getTime() - new Date(_list[i].date).getTime();   //时间差的毫秒数 
+            var dateDays = Math.ceil(delayDate/(24*3600*1000)); //计算出相差天数，并向上取整
+            if(dateDays > 7){
+                // return dateDays
+                await db.collection('MissionList').where({
+                    _id: _list[i]._id
+                  }).remove()
+            }
+        }
     }
     return event
     
