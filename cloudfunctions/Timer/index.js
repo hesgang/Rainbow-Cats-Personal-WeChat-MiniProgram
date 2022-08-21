@@ -58,9 +58,23 @@ exports.main = async (event, context) => {
             }
         }
     }
+    // 删除超过30天的已经购买的商品
+    if(event.TriggerName == "deleteTrigger"){
+        var nowDate = new Date();
+        var _list = await db.collection('MarketList').where({
+            available: false //false完成
+            }).get()
+        _list = _list.data
+        for(i=0;i<_list.length;i++){
+            var delayDate = nowDate.getTime() - new Date(_list[i].date).getTime();   //时间差的毫秒数 
+            var dateDays = Math.ceil(delayDate/(24*3600*1000)); //计算出相差天数，并向上取整
+            if(dateDays > 7){
+                // return dateDays
+                await db.collection('MarketList').where({
+                    _id: _list[i]._id
+                    }).remove()
+            }
+        }
+    }
     return event
-    
-    // return await db.collection('StudyList').where({
-    //     available: false
-    //   }).get()
 }
