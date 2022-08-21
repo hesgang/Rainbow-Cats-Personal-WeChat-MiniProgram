@@ -9,11 +9,12 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (context) => {
   //更改积分数量，减少可用负数
-  return await db.collection(context.list).where({
+  await db.collection(context.list).where({
     _openid: context._openid
   }).update({
     data: {
       credit: db.command.inc(context.value)
     }
   })
+  return context.value
 }

@@ -40,3 +40,35 @@
   color: white;
   background: #3d84a8;
 }
+
+.form-cell1{
+    /* padding: 1px 1px; */
+    margin-left: 1px;
+    /* width: 150px; */
+    display: flex;  
+    flex-direction: row;
+}
+
+.bar{
+    width: 250px;
+    /* height: 20px; */
+    margin-left: 1px;
+}
+
+.bar-num{
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 32rpx;
+  background-color: #fff;
+  /* margin-right: 0px;
+  text-align: right;
+  padding: 6px 10px; */
+}
+
+wx-slider .wx-slider-handle-wrapper {
+    height: 20rpx;
+  }
+  
+.slider-light .wx-slider-track {
+    background: linear-gradient(to right, #4169E1 0%, #00FFFF 100%);
+}

@@ -58,7 +58,8 @@ Page({
   //数据输入填写表单
   onTitleInput(e) {
     this.setData({
-      title: e.detail.value
+      title: e.detail.value,
+      credit: 50
     })
   },
   onDescInput(e) {
@@ -86,6 +87,7 @@ Page({
       presetIndex: e.detail.value,
       title: this.data.presets[e.detail.value].title,
       desc: this.data.presets[e.detail.value].desc,
+      credit: 50,
     })
   },
 

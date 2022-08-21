@@ -54,7 +54,8 @@ Page({
   //数据输入填写表单
   onTitleInput(e) {
     this.setData({
-      title: e.detail.value
+      title: e.detail.value,
+      credit: 5
     })
   },
   onDescInput(e) {
@@ -62,17 +63,27 @@ Page({
       desc: e.detail.value
     })
   },
-  onCreditInput(e) {
-    const val = e.detail.value;
+  // 步进器
+  handleChange(e) {
+    const { value } = e.detail;
+    // console.log(value);
     this.setData({
-      credit: this.data.rangeArray[val[0]]
+        credit: value
     });
+  },
+  // 滑条
+  onCreditInput(e) {
+    // console.log(parseInt(e.detail.value/5))
+    this.setData({
+      credit: parseInt(e.detail.value/5)*5
+    })
   },
   onPresetChange(e){
     this.setData({
       presetIndex: e.detail.value,
       title: this.data.presets[e.detail.value].title,
       desc: this.data.presets[e.detail.value].desc,
+      credit: 5
     })
   },
 

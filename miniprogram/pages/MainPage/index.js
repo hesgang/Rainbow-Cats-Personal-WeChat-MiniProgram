@@ -111,20 +111,20 @@ Page({
         var nowDate = new Date();    //点击时间
         var delayDate = nowDate.getTime() - new Date(missionDate).getTime();   //时间差的毫秒数 
         var dateHour = delayDate/(3600*1000); //计算出相差小时
-        console.log(dateHour)
-        if(dateHour < 2){
-            wx.cloud.callFunction({name: 'deleteElement', data: {_id: mission._id, list: getApp().globalData.collectionStudyList}})
-            //更新本地数据
-            this.data.studyMissions.splice(missionIndex, 1)
-            //触发显示更新
-            this.setData({studyMissions: this.data.studyMissions})
-        } else if(mission.available){
+        // console.log(dateHour)
+        if(!mission.available){
             wx.showToast({
                 title: '会自动删除哒',
                 icon: 'error',
                 duration: 2000
             })
-        }else{
+        }else if(dateHour < 2 && mission.available){
+            wx.cloud.callFunction({name: 'deleteElement', data: {_id: mission._id, list: getApp().globalData.collectionStudyList}})
+            //更新本地数据
+            this.data.studyMissions.splice(missionIndex, 1)
+            //触发显示更新
+            this.setData({studyMissions: this.data.studyMissions})
+        } else{
             wx.showToast({
                 title: '超时不能删',
                 icon: 'error',

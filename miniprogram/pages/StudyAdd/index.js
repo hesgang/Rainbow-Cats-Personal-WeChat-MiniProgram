@@ -40,12 +40,12 @@ Page({
       desc: e.detail.value
     })
   },
-  onCreditInput(e) {
-    const val = e.detail.value;
-    this.setData({
-      credit: this.data.rangeArray[val[0]]
-    });
-  },
+//   onCreditInput(e) {
+//     const val = e.detail.value;
+//     this.setData({
+//       credit: this.data.rangeArray[val[0]]
+//     });
+//   },
   onPresetChange(e){
     this.setData({
       presetIndex: e.detail.value,
